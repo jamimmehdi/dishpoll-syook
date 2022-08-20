@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.9rem;
+  background-color: #ecf0f1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 94vh;
+}
+
+.login-wrapper {
+  height: 98%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  width: fit-content;
+  padding: 30px 15px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  row-gap: 1.7rem;
+}
+
+.input-container {
+  width: fit-content;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container input {
+  height: 2.5rem;
+  width: 300px;
+  border: 0.5px solid gainsboro;
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+
+.input-container input:focus-visible {
+  outline: none;
+}
+
+.input-container span {
+  display: inline-block;
+  width: fit-content;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #4834d4;
+  letter-spacing: 1px;
+  background-color: white;
+  margin-bottom: -8px;
+  margin-left: 10px;
+  z-index: 10;
+}
+
+.login-btn {
+  height: 2.2rem;
+  width: 300px;
+  border: none;
+  background-color: #4834d4;
   color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 300;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 500px) {
+
+  .input-container input {
+    height: 3rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .login-container {
+   margin-top: -40%;
+  }
+
+  .login-btn {
+    height: 3rem;
   }
 }
