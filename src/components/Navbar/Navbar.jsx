@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { RANKING, LOGIN, DISHES } from '../../routes';
 import { useAuth } from '../utils/loginAuth';
 
@@ -11,7 +11,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (showLogout && auth.user) logoutDropDown.current.style.display = 'flex';
-    else if(!showLogout && auth.user) logoutDropDown.current.style.display = 'none';
+    else if (!showLogout && auth.user) logoutDropDown.current.style.display = 'none';
   }, [showLogout]);
   return (
     <div className='navbar'>
@@ -49,8 +49,8 @@ export default function Navbar() {
         {
           auth.user &&
           <li>
-            <div className='profile-container' 
-            onClick={() => setShowLogout(show => !show)}
+            <div className='profile-container'
+              onClick={() => setShowLogout(show => !show)}
             >
               <div className='profile-image'>{auth.user && auth.user.substring(0, 2).toUpperCase()}</div>
               <p className='profile-name hide-mobile'>{auth.user && auth.user.toUpperCase()}</p>

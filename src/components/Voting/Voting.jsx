@@ -27,12 +27,11 @@ export default function Voting() {
 		for (let index = 0; index < total_rating.length; index++) {
 			const dish = total_rating[index];
 			if (dish.id === current_dish_id) {
-				// Updating the global rating based on current user action -> globalRating = (currentTotalRating - previousRating) + currentRatingByUser
+				// globalRating = (currentTotalRating - previousRating) + currentRatingByUser
 				total_rating[index].rating = (total_rating[index].rating - previousRating) + (selected_dishes[selected_dish_index].rating);
 				break;
 			}
 		}
-
 		dispatch({ type: UPDATE__DISH__RATING, payload: { username: auth.user, selected_dishes, data: total_rating } });
 	}
 
@@ -40,7 +39,7 @@ export default function Voting() {
 		<div className='voting-wrapper'>
 			<div className='voting-container'>
 				<div className='info-container'>
-					<p className='info-text'>Rate Dishes</p>
+					<p className='info-text'>Selected Dishes</p>
 					<button className='ranking-btn' onClick={() => rankingNavigation(RANKING)}>Ranking <GrLinkNext /></button>
 				</div>
 				<div className='voting-dishes-container'>

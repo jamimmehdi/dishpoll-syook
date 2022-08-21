@@ -1,17 +1,17 @@
 import './App.css';
-import { LOAD__INITIAL__DATA } from './helper/actions.type';
+import { useEffect, useReducer } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+import Vote from './pages/Vote';
+import Login from './pages/Login';
+import Navbar from './components/Navbar/Navbar';
 import Dishes from './pages/Dishes';
 import Ranking from './pages/Ranking';
-import Navbar from './components/Navbar/Navbar';
-import Login from './pages/Login';
-import { AuthProvider } from './components/utils/loginAuth';
-import { useEffect, useReducer } from 'react';
-import pollReducer from './helper/pollReducer';
 import { pollContext } from './context/pollContext';
-import { RANKING, DISHES, LOGIN, VOTE } from './routes';
-import Vote from './pages/Vote';
 import RequireAuth from './components/utils/RequireAuth';
+import { AuthProvider } from './components/utils/loginAuth';
+import pollReducer from './helper/pollReducer';
+import { LOAD__INITIAL__DATA } from './helper/actions.type';
+import { RANKING, DISHES, LOGIN, VOTE } from './routes';
 
 const data = require('./api/data.json');
 const users = require('./api/users.json');

@@ -35,11 +35,10 @@ export default function Dishes() {
         alert('Cannot select more than 3 dishes!');
         return;
       }
-
       current_user_selection = [...current_user_selection, { dish_id, rating: 0 }];
       dispatch({ type: HANDLE__DISH__SELECTION, payload: { selected_dishes: current_user_selection, username } });
     } else {
-      alert('Please login to continue!')
+      alert('Please login to continue!');
     }
   }
 
@@ -56,10 +55,9 @@ export default function Dishes() {
         return;
       }
     }
-
     votingNavigation(VOTE);
   }
-  
+
   return (
     <div className='dishes-wrapper'>
       <div className='dishes-container'>
