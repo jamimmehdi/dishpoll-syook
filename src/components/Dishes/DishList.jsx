@@ -59,7 +59,7 @@ export default function Dishes() {
 
     votingNavigation(VOTE);
   }
-
+  
   return (
     <div className='dishes-wrapper'>
       <div className='dishes-container'>
@@ -70,28 +70,18 @@ export default function Dishes() {
         <div className='dishes'>
           {
             state && state.data.map((dish, index) => {
+              const current_dish = state.data_map.get(dish.id);
               return (
-                <div className={`dish-container ${user_selected_dish_id && user_selected_dish_id.includes(dish.id) ? 'selected' : ''}`}
+                <div className={`dish-container ${user_selected_dish_id && user_selected_dish_id.includes(current_dish.id) ? 'selected' : ''}`}
                   key={index}
-                  onClick={(event) => handleCardSelection(event, dish.id, auth.user)}>
+                  onClick={(event) => handleCardSelection(event, current_dish.id, auth.user)}>
                   <div className='dish-image-container'>
-                    <img src={dish.image} />
+                    <img src={current_dish.image} />
                   </div>
                   <div className='dish-details-container'>
-                    <p className='dish-name'>{dish.dishName}</p>
+                    <p className='dish-name'>{current_dish.dishName}</p>
                     <span></span>
-                    <p className='dish-description'>{dish.description}</p>
-                    {
-                      /*
-                        <div className='rating-container'>
-                      <div className='rating-wrapper'>
-                        <span className='rating active-points'>1</span>
-                        <span className='rating'>2</span>
-                        <span className='rating'>3</span>
-                      </div>
-                    </div>
-                      */
-                    }
+                    <p className='dish-description'>{current_dish.description}</p>
                   </div>
                 </div>
               )
