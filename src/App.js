@@ -9,6 +9,10 @@ import { AuthProvider } from './components/utils/loginAuth';
 import { useEffect, useReducer } from 'react';
 import pollReducer from './helper/pollReducer';
 import { pollContext } from './context/pollContext';
+import { RANKING, DISHES, LOGIN, VOTE } from './routes';
+import Vote from './pages/Vote';
+import RequireAuth from './components/utils/RequireAuth';
+
 const data = require('./api/data.json');
 const users = require('./api/users.json');
 
@@ -30,15 +34,16 @@ function App() {
 
   return (
     <div className='main-container'>
-     <pollContext.Provider value={{
+      <pollContext.Provider value={{
         state, dispatch
       }}>
         <AuthProvider>
           <Navbar />
           <Routes>
-            <Route path='/' element={<Dishes />} />
-            <Route path='/ranking' element={<Ranking />} />
-            <Route path='/login' element={<Login />} />
+            <Route path={DISHES} element={<Dishes />} />
+            <Route path={RANKING} element={<Ranking />} />
+            <Route path={LOGIN} element={<Login />} />
+            <Route path={VOTE} element={<RequireAuth><Vote /></RequireAuth>} />
           </Routes>
         </AuthProvider>
       </pollContext.Provider>

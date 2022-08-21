@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { RANKING, LOGIN, DISHES } from '../../routes';
 import { useAuth } from '../utils/loginAuth';
 
@@ -15,7 +15,6 @@ export default function Navbar() {
   }, [showLogout]);
   return (
     <div className='navbar'>
-
       <Link to={DISHES}>
         <div className='logo'>
           <span className='bold'>Dish</span>

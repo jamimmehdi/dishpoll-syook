@@ -1,4 +1,4 @@
-import { LOAD__INITIAL__DATA, HANDLE__DISH__SELECTION } from './actions.type';
+import { LOAD__INITIAL__DATA, HANDLE__DISH__SELECTION, UPDATE__DISH__RATING } from './actions.type';
 
 const pollReducer = (state, actions) => {
     switch (actions.type) {
@@ -24,6 +24,12 @@ const pollReducer = (state, actions) => {
             return {
                 ...state,
                 users_map: state.users_map.set(username, selected_dish),
+            }
+
+        case UPDATE__DISH__RATING:
+
+            return {
+                ...state,
             }
 
         default:

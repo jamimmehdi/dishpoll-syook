@@ -4,10 +4,13 @@ import { useAuth } from '../utils/loginAuth';
 import './Dishes.css';
 import { HANDLE__DISH__SELECTION } from '../../helper/actions.type';
 import { GrLinkNext } from "react-icons/gr";
+import { useNavigate } from 'react-router-dom';
+import { VOTE } from '../../routes';
 
 
 export default function Dishes() {
   const { state, dispatch } = usePollContext();
+  const votingNavigation = useNavigate();
   const auth = useAuth();
   let current_user_selection = state.users_map.get(auth.user);
   const user_selected_dish_id = auth.user && current_user_selection.map((selected_dish) => selected_dish.dish_id);
@@ -40,12 +43,29 @@ export default function Dishes() {
     }
   }
 
+  // Handle voting
+  const handleVoting = () => {
+    if (!auth.user) {
+      alert('Please login to vote!');
+    }
+
+    if (auth.user) {
+      const current_user_selection = state.users_map.get(auth.user);
+      if (current_user_selection.length < 3) {
+        alert('Please select upto 3 dishes to start voting!');
+        return;
+      }
+    }
+
+    votingNavigation(VOTE);
+  }
+
   return (
     <div className='dishes-wrapper'>
       <div className='dishes-container'>
         <div className='more-container'>
           <p className='vote-text'>Select upto 3 dishes to vote</p>
-          <button className='vote-btn'>Vote <GrLinkNext/></button>
+          <button className='vote-btn' onClick={handleVoting}>Vote <GrLinkNext /></button>
         </div>
         <div className='dishes'>
           {
